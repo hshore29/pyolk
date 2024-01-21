@@ -16,3 +16,12 @@ from pyolk import PyOLKReader
 p = PyOLKReader()
 p.export()
 ```
+
+## Structure
+`pyolk.py` includes the caller and the interface to `Outlook.sqlite`, the cache's database / index.
+
+`mailobjects.py` are `@dataclass` interfaces for the various different objects that are cached (emails, calendar invites, tasks, mailboxes, etc.)
+
+`datafiles.py` is the main parser class for the `olk15*` binary files. All of these use basically the same binary encoding patterns, so a single parser is able to read `olk15Message`, `olk15Category`, `olk15Event`, etc.
+
+`utils.py` includes helper functions for parsing specific binary data types that were short and used multiple places.
